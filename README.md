@@ -1,5 +1,5 @@
-# 📝 Learning-Todo-Flask
-> **🌐 Live Demo:** (https://to-do-list-webapp-jcej.onrender.com)
+# 📝 To-Do-List-App
+- **🌐 Live Demo:** (https://to-do-list-webapp-jcej.onrender.com)
 A lightweight web application built to practice the fundamentals of **CRUD** (Create, Read, Update, Delete) operations using Python and the Flask framework.
 
 ## 🚀 The "Why" behind this project
@@ -24,3 +24,4 @@ The project follows an iterative development cycle. I am currently learning how 
 2. Ensure Flask is installed: `pip install flask`.
 3. Run `python app.py` and navigate to `localhost:5000`.
 
+**Note:** The live demo is hosted on a free tier and may take 30 seconds to wake up on the first load.
