@@ -14,7 +14,6 @@ def index():
 
 @app.route("/add", methods=["POST"])
 def add_task():
-    # I learnt how to use POST requests to send data from HTML forms to Python
 
     new_item = request.form.get("task_input", "").strip()
 
