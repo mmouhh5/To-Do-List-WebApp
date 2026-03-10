@@ -1,0 +1,225 @@
+/* style.css — To-Do List App */
+/* Status: Beta v0.1 — clean but still a WIP! */
+
+/* ===== Reset & Base ===== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #f0f4ff;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+    position: relative;
+}
+
+/* ===== Beta Badge ===== */
+.beta-badge {
+    position: fixed;
+    top: 14px;
+    right: -28px;
+    background: linear-gradient(135deg, #f59e0b, #ef4444);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    padding: 5px 40px;
+    transform: rotate(45deg);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+    transform-origin: center;
+    transform: rotate(45deg) translateX(16px);
+}
+
+/* ===== Main Container ===== */
+.container {
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(99, 102, 241, 0.12);
+    padding: 2.5rem 2rem;
+    width: 100%;
+    max-width: 540px;
+    border: 1.5px solid #e0e7ff;
+}
+
+/* ===== Header ===== */
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #312e81;
+    letter-spacing: -0.5px;
+}
+
+.subtitle {
+    color: #818cf8;
+    font-size: 0.9rem;
+    margin-top: 0.3rem;
+    font-style: italic;
+}
+
+/* ===== Add Task Form ===== */
+.add-task-form {
+    display: flex;
+    gap: 0.6rem;
+    margin-bottom: 2rem;
+}
+
+.task-input {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border: 2px solid #c7d2fe;
+    border-radius: 10px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    color: #1e1b4b;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    background: #f8f9ff;
+}
+
+.task-input::placeholder {
+    color: #a5b4fc;
+}
+
+.task-input:focus {
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+    background: #fff;
+}
+
+.btn-add {
+    padding: 0.75rem 1.2rem;
+    background: linear-gradient(135deg, #6366f1, #4f46e5);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    white-space: nowrap;
+}
+
+.btn-add:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4);
+}
+
+.btn-add:active {
+    transform: translateY(0);
+}
+
+/* ===== Task Section ===== */
+.task-section {
+    min-height: 80px;
+}
+
+.task-count {
+    font-size: 0.8rem;
+    color: #a5b4fc;
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* ===== Task List ===== */
+.task-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: #f8f9ff;
+    border: 1.5px solid #e0e7ff;
+    border-radius: 10px;
+    padding: 0.8rem 1rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.task-item:hover {
+    border-color: #a5b4fc;
+    box-shadow: 0 2px 8px rgba(99, 102, 241, 0.1);
+}
+
+/* Check button form wrapper — no extra spacing */
+.check-form {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.btn-check {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 0;
+    line-height: 1;
+    transition: transform 0.15s ease;
+}
+
+.btn-check:hover {
+    transform: scale(1.2);
+}
+
+.task-text {
+    flex: 1;
+    font-size: 0.95rem;
+    color: #312e81;
+    font-weight: 500;
+    word-break: break-word;
+    transition: color 0.2s ease, text-decoration 0.2s ease;
+}
+
+/* ===== Done / Completed Task ===== */
+.task-item.done {
+    background: #f0fdf4;
+    border-color: #86efac;
+    opacity: 0.85;
+}
+
+.task-item.done .task-text {
+    text-decoration: line-through;
+    color: #86efac;
+    font-weight: 400;
+}
+
+/* ===== Empty State ===== */
+.empty-state {
+    text-align: center;
+    color: #a5b4fc;
+    font-size: 0.95rem;
+    padding: 2rem 0;
+    border: 2px dashed #e0e7ff;
+    border-radius: 12px;
+}
+
+/* ===== Footer ===== */
+footer {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px dashed #e0e7ff;
+    color: #c7d2fe;
+    font-size: 0.8rem;
+}

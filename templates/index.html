@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My To-Do List 📝</title>
+    <!-- Using Google Fonts for a nice, modern look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <!-- Beta badge in the corner — still under construction! -->
+    <div class="beta-badge">⚙️ Beta v0.1</div>
+
+    <div class="container">
+
+        <header>
+            <h1>📝 My To-Do List</h1>
+            <p class="subtitle">Work In Progress — one task at a time!</p>
+        </header>
+
+        <!-- Add Task Form -->
+        <!-- Learning: action="/add" sends the form data to our /add route in Flask -->
+        <!-- Learning: method="POST" means we're sending data securely in the request body -->
+        <form class="add-task-form" action="/add" method="POST">
+            <input type="text" name="task_input" class="task-input" placeholder="What needs to be done?"
+                autocomplete="off" required />
+            <button type="submit" class="btn-add">+ Add Task</button>
+        </form>
+
+        <!-- Task List Section -->
+        <section class="task-section">
+            {% if current_tasks %}
+            <p class="task-count">{{ current_tasks|length }} task(s) in the list</p>
+            <ul class="task-list">
+                {% for task in current_tasks %}
+                <li class="task-item {{ 'done' if task.done else '' }}">
+                    <!-- Learning: loop.index0 gives us the index starting from 0, used as the task ID -->
+                    <form action="/complete/{{ loop.index0 }}" method="POST" class="check-form">
+                        <button type="submit" class="btn-check" title="Toggle complete">
+                            {{ '✅' if task.done else '🔲' }}
+                        </button>
+                    </form>
+                    <span class="task-text">{{ task.text }}</span>
+
+                    <!-- TODO: Add a 'Delete' button here -->
+                </li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <div class="empty-state">
+                <p>🌟 No tasks yet — add something above!</p>
+            </div>
+            {% endif %}
+        </section>
+
+        <footer>
+            <p>🚧 More features coming soon... (delete — stay tuned!)</p>
+        </footer>
+
+    </div>
+
+</body>
+
+</html>
